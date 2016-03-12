@@ -65,4 +65,10 @@ public final class PlayerCoins
 		return true;
 	}
 	
+	public boolean hasEnoughCoins(Player player, int coins)
+	{
+		int c = getCoins(player);
+		return c >= coins;
+	}
+	
 }

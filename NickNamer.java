@@ -17,12 +17,6 @@ public final class NickNamer
 		sqlAPI = Bukkit.getPluginManager().isPluginEnabled("TSQL");
 	}
 	
-	public static boolean createNickNamer()
-	{
-		new NickNamer();
-		return nicker && sqlAPI;
-	}
-	
 	public static boolean canUseSQL()
 	{
 		return sqlAPI;

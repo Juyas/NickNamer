@@ -35,9 +35,10 @@ public final class NickNamer
 	
 	public static NickNamer getInstance()
 	{	
+		NickNamer nn = new NickNamer();
 		if(nicker && sqlAPI)
 		{			
-			return new NickNamer();		
+			return nn;	
 		}
 		else return null;	
 	}

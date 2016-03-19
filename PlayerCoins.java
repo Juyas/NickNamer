@@ -14,7 +14,7 @@ public final class PlayerCoins
 		sqlAPI = Bukkit.getPluginManager().isPluginEnabled("TSQL");
 	}
 	
-	public static boolean createNickNamer()
+	public static boolean createPlayerCoins()
 	{
 		new PlayerCoins();
 		return sqlAPI;
@@ -50,15 +50,13 @@ public final class PlayerCoins
 	public boolean addCoins(Player player, int coins)
 	{
 		if(coins < 0) return remCoins(player, -coins);
-		else 
-		{
-			setCoins(player, getCoins(player) + coins);
-			return true;
-		}
+		NickCoinAPI.changeCoins(player.getUniqueId(), coins);
+		return true;
 	}
 	
 	public boolean remCoins(Player player, int coins)
 	{
+		if(coins < 0) return addCoins(player, -coins);
 		int c = getCoins(player) - coins;
 		if(c < 0) return false;
 		setCoins(player, c);
@@ -67,8 +65,7 @@ public final class PlayerCoins
 	
 	public boolean hasEnoughCoins(Player player, int coins)
 	{
-		int c = getCoins(player);
-		return c >= coins;
+		return NickCoinAPI.hasEnoughCoins(player.getUniqueId(), coins);
 	}
 	
 }
